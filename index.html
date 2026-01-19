@@ -89,6 +89,50 @@
             background-image: radial-gradient(#1e293b 1px, transparent 1px);
             background-size: 30px 30px;
         }
+
+        /* INFINITE LOOP ANIMATION */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        .animate-loop {
+            animation: scroll 60s linear infinite; /* Slower for vertical details */
+        }
+        /* Pause scroll on hover over the container */
+        .loop-container:hover .animate-loop {
+            animation-play-state: paused;
+        }
+
+        /* VERTICAL MOCKUP STYLE (9:16) */
+        .vertical-mockup {
+            aspect-ratio: 9/16;
+            width: 160px; /* Base width */
+            border-radius: 12px;
+            border: 4px solid #1e293b;
+            background: #0f172a;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+            z-index: 10;
+        }
+
+        /* Hover/Touch Effect: Amplify */
+        .vertical-mockup:hover,
+        .vertical-mockup:active {
+            transform: scale(1.5); /* Amplify */
+            z-index: 50; /* Bring to front */
+            border-color: #2563eb; /* Brand color border */
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.5);
+            cursor: pointer;
+        }
+
+        /* Mobile Adjustments for width */
+        @media (min-width: 768px) {
+            .vertical-mockup {
+                width: 180px;
+            }
+        }
     </style>
 </head>
 <body class="bg-brand-dark text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
@@ -282,7 +326,53 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- NEW: INFINITE SHOWCASE LOOP SECTION (VERTICAL 9:16) -->
+    <section class="py-16 bg-black border-y border-slate-800 overflow-hidden relative loop-container">
+        <!-- Fade Edges -->
+        <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none"></div>
+        
+        <div class="mb-10 text-center px-4 relative z-10">
+            <span class="text-brand-accent text-sm font-bold tracking-[0.2em] uppercase">Interfaces Mobile & Responsivas</span>
+            <h3 class="text-white text-xl md:text-2xl font-bold mt-2">Galeria de Aplicações</h3>
+        </div>
+
+        <!-- Scroll Container -->
+        <div class="flex w-[calc(180px*24+24*1.5rem)] animate-loop hover:pause">
+            <!-- First Set of Images -->
+            <div class="flex items-center gap-8 px-4">
+                <div class="vertical-mockup"><img src="IM1.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM2.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM3.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM4.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM5.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM6.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM7.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM8.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM9.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM10.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM11.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM12.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+            </div>
+            <!-- Duplicate Set for Seamless Loop -->
+            <div class="flex items-center gap-8 px-4">
+                <div class="vertical-mockup"><img src="IM1.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM2.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM3.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM4.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM5.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM6.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM7.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM8.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM9.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM10.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM11.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+                <div class="vertical-mockup"><img src="IM12.png" class="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section (Detailed) -->
     <section id="portfolio" class="py-20 bg-brand-dark tech-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
